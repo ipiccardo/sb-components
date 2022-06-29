@@ -21,29 +21,27 @@ export interface Props {
      /**
      * Color personalizado de la fuente
      */
-      fontColor?: string
+    fontColor?: string;
+    /**
+    * Color personalizado del fondo
+    */
+    backgroundColor?: string
 }
 
 const MyLabel = ( {
-    label = 'No Label',
+    label,
     size = 'normal',
     color = 'primary',
     allCaps = false,
-    fontColor = ''
+    fontColor = '',
+    backgroundColor = 'transparent'
 }: Props) => {
 
 const _color = 'text-'
 
-    if (!allCaps) {
-        label = 'LABEL'
-    } else {
-        label = 'label'
-    }
-
-
   return <span className={`label ${ size } ${_color}${color}`}
-  style={{color: fontColor}}>
-                { label }
+  style={{color: fontColor, backgroundColor: backgroundColor}}>
+                { allCaps ? label.toUpperCase() : label }
          </span>;
 };
 
